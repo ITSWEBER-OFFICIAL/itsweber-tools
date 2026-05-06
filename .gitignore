@@ -32,3 +32,6 @@ previews/
 
 # Internal docs
 docs/internal/
+
+# Generated wiki bundles (build artifact, not source)
+docs/wiki/*.zip
