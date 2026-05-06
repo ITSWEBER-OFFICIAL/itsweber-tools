@@ -1,5 +1,7 @@
 # Unraid Installation
 
+> [🇩🇪 Deutsch](de/03-unraid-installation.md)
+
 ## Community App (recommended)
 
 Search for **"ItsWeber Tools"** in the Unraid Community Applications plugin.

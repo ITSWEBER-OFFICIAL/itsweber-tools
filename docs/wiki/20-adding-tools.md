@@ -1,5 +1,7 @@
 # Adding a New Tool
 
+> [🇩🇪 Deutsch](de/20-tool-hinzufügen.md)
+
 ## 1. Create the tool file
 
 `packages/toolkit/src/tools/<id>.ts`:
