@@ -17,8 +17,21 @@ Thumbs.db
 *.code-workspace
 .vscode/settings.json
 
+# AI / agent working memory — never commit, on any level
+**/CLAUDE.md
+**/AGENTS.md
+.claude/
+.agents/
+.continue/
+skills/
 memory/
 *.jsonl
 
 # Local design previews (internal only)
 previews/
+
+# Internal docs
+docs/internal/
+
+# Generated wiki bundles (build artifact, not source)
+docs/wiki/*.zip

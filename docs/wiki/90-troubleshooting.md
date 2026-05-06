@@ -1,5 +1,7 @@
 # Troubleshooting
 
+> [🇩🇪 Deutsch](de/90-fehlerbehebung.md)
+
 ## Container starts but page is blank
 
 Check that port 8080 (or your chosen host port) is not already in use:
@@ -32,3 +34,25 @@ docker build -f docker/Dockerfile -t itsweber-tools:dev .
 ## nginx returns 403
 
 The static files are served by a non-root user (`appuser`). If you mount a custom `nginx.conf` that changes the user directive, ensure the nginx worker process has read access to `/usr/share/nginx/html`.
+
+## Settings, pipes, or favorites reset to defaults
+
+All data is in `localStorage` under the prefix `itsweber-tools:`. Check:
+
+1. Browser privacy mode / incognito — localStorage does not persist across sessions in private windows.
+2. Browser set to clear site data on close — disable this for the container's origin, or use a persistent browser profile.
+3. Origin mismatch — if you access the app via different ports or hosts (e.g. `localhost:8080` vs `192.168.1.x:8080`), each origin has its own localStorage. Stick to one URL.
+
+## Pipe step receives wrong input
+
+Check the step's **input mode**. If set to **Static**, it ignores the previous output and always uses the fixed value you typed. Switch to **Chain** to receive the upstream output.
+
+If the upstream step produces metadata headers alongside data (e.g. `Modus: Encode`), the upstream tool must set `rawOutput` so the pipe receives clean data. See [20-adding-tools.md](20-adding-tools.md#2-rawoutput-for-tools-with-metadata-headers).
+
+## Image tool shows no output after dropping a file
+
+Image tools require `inputMode: "image-drop"` in the tool definition, and the Workbench shows a drop zone instead of a text input. If you see a text area, the tool does not support image input. Check the tool's description or source file.
+
+## Theme or language switch has no effect
+
+Try a hard reload (`Ctrl + Shift + R`). If the issue persists, open DevTools → Application → Storage → `localStorage` and verify the keys `itsweber-tools:theme` and `itsweber-tools:language` have the expected values.

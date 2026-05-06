@@ -9,6 +9,11 @@ node_modules
 *.jsonl
 previews
 docs
+.claude
+.agents
+.continue
+skills
+memory
 .prettierrc.json
 .prettierignore
 eslint.config.mjs

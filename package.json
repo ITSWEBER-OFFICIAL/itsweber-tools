@@ -19,6 +19,8 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "preview": "pnpm --filter @itsweber/tools-web preview",
+    "prepare-release": "node scripts/prepare-release.mjs",
+    "prepare-release:check": "node scripts/prepare-release.mjs --dry-run",
     "docker:build": "docker build -f docker/Dockerfile -t itsweber-tools:local .",
     "docker:run": "docker run --rm -p 8080:80 itsweber-tools:local"
   },
